@@ -24,20 +24,25 @@ supervised learning : 要先把data label(在蒐集時就label好了)
 1. train decision tree
     > python3 tree.py
 2. train random forrest
-    > python3 forrest.py 5
-    > 5代表tree數量，也可以自己改
+    ```
+    python3 forrest.py 5
+    5代表tree數量，也可以自己改
+    ```
 3. dnn
-    > python3.5 dnn.py [testfile] =>  一路從train到test(使用doremi.wav)
-    > testfile放要測試的wav檔
-    > EX : python3.5 dnn.py Testdata/test.wav
+    ```
+    python3.5 dnn.py [testfile] =>  一路從train到test(使用doremi.wav)
+    testfile放要測試的wav檔
+    EX : python3.5 dnn.py Testdata/test.wav
+    ```
 ### Test
 python3 test.py [testfile] [model] [tree_num]
-> testfile 測試的wav檔 ==> 可以用 Testdata/doremi.wav
-> model為要用的模型 ==> 可以為 tree或 forrest，分別代表使用decision tree、random forrest
-> tree_num為random forrest樹的數量，只有用random forrest時才要用
-> EX : python3 test.py Testdata/doremi.wav tree
-> EX2 : python3 test.py Testdata/doremi.wav forrest 5
-
+```
+testfile 測試的wav檔 ==> 可以用 Testdata/doremi.wav
+model為要用的模型 ==> 可以為 tree或 forrest，分別代表使用decision tree、random forrest
+tree_num為random forrest樹的數量，只有用random forrest時才要用
+EX : python3 test.py Testdata/doremi.wav tree
+EX2 : python3 test.py Testdata/doremi.wav forrest 5
+```
 ### dnn
 python3.5 dnn.py
 
