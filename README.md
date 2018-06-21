@@ -104,3 +104,23 @@ do,re,mi,fa,so五個音個50個wav檔，每個wav檔就是一個那個特定的�
 2. optimizer : adam
 3. loss : categorical_crossentropy
 效果蠻差的，
+## 使用autoencoder
+以上的code都是沒有使用autoencoder的部分，
+要使用autoencoder的方法為
+首先產生encoder_model
+```
+python3 autoencode.py
+```
+在test.py裡33,34行內加入
+```
+encoder = train.loadAutoencoder()
+data = train.lessdimension(data,encoder)
+```
+然後逐一修改dnn.py 或 tree.py 或forrest.py 看要用哪個model測試，以tree.py為例
+在shuffle之前(約25~26行的地方)
+加入
+```
+encoder = train.loadAutoencoder()
+alldata = train.lessdimension(alldata,encoder)
+```
+這樣做降維，其他code用法也依樣，在適當位置加入這兩行code
