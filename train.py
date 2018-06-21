@@ -5,6 +5,14 @@ from scipy.sparse import coo_matrix
 from sklearn.utils import shuffle
 from sklearn.externals import joblib
 from scipy.fftpack import dct
+from keras.models import load_model
+def loadAutoencoder():
+	encoder = load_model("./best_encoder")
+	return encoder
+
+def lessdimension(alldata,encoder):
+	return encoder.predict(alldata)
+
 def loadForrest(num):
 	a = []
 	for i in range(num):
