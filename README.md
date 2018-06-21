@@ -9,16 +9,14 @@ supervised learning : 要先把data label(在蒐集時就label好了)
 目前只蒐集do~so和noise的wav檔。
 使用focus用法，針對signal，取發生那段(詳述在problem.txt內)
 ## 安裝套件
-- python3.6
+- python3.5
 - sklearn
 - scipy
 - numpy
 - pyaudio == 0.2.11
 - **DNN**:
-    - 這裡比較特別與tree model不同的點是用python3.5
     - keras == 2.0.8
     - tensorflow == 1.3.0
-    - 其餘上述套件版本3.6 3.5都一樣
 ## 使用方法
 ### Train
 1. train decision tree
@@ -56,7 +54,7 @@ python3.5 dnn.py
 - **test.py** :把file.wav拿來test
 - **demo.py** : demo時錄音用
 - **dnn.py** : Deep Nueral Network
-- **autoencoder** : 降維(未經測試)
+- **autoencoder** : 降維
 
 ## model
 - **tree.pkl**:用tree.py train出來的model
@@ -88,7 +86,8 @@ python3.5 dnn.py
 
 ## Traindata位置
 ### [Dropbox](https://www.dropbox.com/sh/slb81q2s6z9uafc/AACHbLHjwuQ5zprz5LqLP9yEa?dl=1)
-
+內有所有的model，所以照理說只是要測試的話直接執行 test.py
+tree.pkl、forrest都有model
 ## 效果比較
 ### Training data數量
 do,re,mi,fa,so五個音個50個wav檔，每個wav檔就是一個那個特定的音
@@ -116,11 +115,18 @@ python3 autoencode.py
 encoder = train.loadAutoencoder()
 data = train.lessdimension(data,encoder)
 ```
-然後逐一修改dnn.py 或 tree.py 或forrest.py 看要用哪個model測試，以tree.py為例
-在shuffle之前(約25~26行的地方)
-加入
+tree.py為例在shuffle之前(約25~26行的地方)加入
 ```
 encoder = train.loadAutoencoder()
 alldata = train.lessdimension(alldata,encoder)
 ```
-這樣做降維，其他code用法也依樣，在適當位置加入這兩行code
+dnn.py在(34~35行)data reshape完但未predict前
+```
+encoder = train.loadAutoencoder()
+data = train.lessdimension(data,encoder)
+```
+forrest在shuffle前(26行)加入
+```
+encoder = train.loadAutoencoder()
+alldata = train.lessdimension(alldata,encoder)
+```
