@@ -47,14 +47,14 @@ python3.5 dnn.py
 ## code
 - **record.py**:蒐集wav檔的主要程式碼
 - **complement.py**:record.py是做大量蒐集，中間如果有漏錄，或者吹錯音，用這個程式修改，這個程式只做單一wav檔錄製
-- **mfcc.py**：將上述wav檔轉成numpy array(MFCC,40維)
+- **mfcc.py**：將上述wav檔轉成numpy array(MFCC,36維)
 - **tree.py** : regression decision tree
 - **svm.py** : svm model
 - **train.py** : library for training and turn data to mfcc
 - **test.py** :把file.wav拿來test
 - **demo.py** : demo時錄音用
 - **dnn.py** : Deep Nueral Network
-- **autoencoder** : 降維
+- **autoencoder.py** : 降維
 
 ## model
 - **tree.pkl**:用tree.py train出來的model
@@ -90,7 +90,7 @@ python3.5 dnn.py
 tree.pkl、forrest都有model
 ## 效果比較
 ### Training data數量
-do,re,mi,fa,so五個音個50個wav檔，每個wav檔就是一個那個特定的音
+do,re,mi,fa,so五個音個80個wav檔，每個wav檔就是一個那個特定的音
 ### Testing data
 <歡樂頌> 前12個音、C大調音階
 ### 嘗試model
